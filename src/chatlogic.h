@@ -4,6 +4,7 @@
 #include <vector>
 #include <string>
 #include "chatgui.h"
+#include <memory>
 
 // forward declarations
 class ChatBot;
@@ -17,8 +18,11 @@ private:
     ////
 
     // data handles (owned)
-    std::vector<GraphNode *> _nodes;
-    std::vector<GraphEdge *> _edges;
+    // std::vector<GraphNode *> _nodes;
+    std::vector<std::unique_ptr<GraphNode>> _nodes;
+
+    //std::vector<GraphEdge *> _edges;
+    //std::vector<std::unique_ptr<GraphNode>> _edges;
 
     ////
     //// EOF STUDENT CODE
@@ -33,6 +37,7 @@ private:
 
     // proprietary functions
     template <typename T>
+    //template <typename T>
     void AddAllTokensToElement(std::string tokenID, tokenlist &tokens, T &element);
 
 public:
